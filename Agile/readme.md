@@ -1,0 +1,4 @@
+- Don't forget Agile *values* by focusing only on ceremonies etc.
+- Agile *software development* (Extreme Programming, etc.)
+- My approach to balancing iterative feature rollout without accumulating too much technical debt by neglecting code quality and design, architecture, infrastructure, etc.
+  - (Link to separate document).

@@ -1,0 +1,20 @@
+S3 paths
+- confusion about whether variable containing path includes 's3://'
+  - decision: don't store whole paths, but assemble from components
+    - downside: longer (more characters), on average
+    - advantage: shorter list of Env variables
+  - alternative: do NOT include 's3://'
+- running out of meaningful names, in particular to distinguish project prefix from the prefix for a subtask (e.g., storing all input data)
+  - decision: new bucket per project
+    - disadvantage: have to create more buckets
+      - solution: automate creation with template (first shell script, then service catalog)
+      - advantage: `prefix` can refer to subtask, e.g., 'train' [not a great example, because we don't need an env variable for such short and standard names].
+      - Advantage 2: Managing access control is easier at the bucket level.
+- Include “_name” in BUCKET_NAME, FILE_NAME, etc?
+  - Pro: explicitly distinguish names from object references
+  - Con: more verbose
+  - Decision: Only include such postfixes as a last resort if there is no more direct way to make data type apparent. Usually, these are constants, so capitalization already tells us we're not dealing with a reference. In other cases, the use of type hints can disambiguate what we're dealing with.
+- How to standardize names (e.g., folder names for train, val, etc)
+  - Simple strategy: Document
+  - Better: create a `constants` module → enables code completion, so we don't have to remember it, and we don't make spelling mistakes causing bugs! Can also package and share it (but crucial to freeze the version of this module used - may be hard if using anaconda rather than pipenv?)
+  - Even better: If implementing a high-level framework, automatically handle naming based on this enum (May need to take 'train/test/type' as an argument – which partially defeats the purpose – unless can create all together, if way of doing this does not need much customization for different use cases.)

@@ -1,0 +1,11 @@
+- Standardize which IDE we use?
+	+ Pro:
+		- easier to manage common settings in version control, In particular to make sure everybody is using productivity-enhancing features (e.g., static code analysis plugins to get instant feedback while writing the code - and not just on commit or even merge - to get instant feedback).
+		- Can commit project-specific IDE configurations, e.g. whether to initialize Anaconda in integrated terminal; debug configuration (launch.json in VSCode).
+		- The best IDE's offer a lot of powerful productivity features, but it takes quite a bit of initial time investment in order to be able to leverage those features. Likewise, it requires an initial upfront investment to get used to configure those settings as code, and to find an efficient process to It's already a lot of investment to master one of them, so it's already hard to invest enough time.
+	+ Con: it's not great to force people to do something against their will, either because they don't like it, or because they already have invested a lot of time learning a different productivity tool.
+	+ Decision:
+		- Try to convince and give incentives to standardize, but don't force anyone. If somebody really wants to use a different tool, they will be responsible for managing configurations (general and project specific settings, setup scripts) as code. The goal is that it lives up to the same quality standards as the main/original tool.
+		- Doing this extra work is not for everyone – it requires a certain kind of personality (e.g., being passionate about process improvement, and thinking a lot about how certain features make coding more productive, rather than just focusing on delivering tangible features in the short term). If we do have such a personality on the team who is interested in exploring other options, it actually might be beneficial to have someone stay up to date with the potentials of competing tools. This helps reduce the risk that we may miss it if a tool that initially was inferior gradually catches up, and may at some point offer compelling reasons to switch over (like Visual Studio code has over the last couple of years, compared to PyCharm).
+		- Be careful to **not manage settings in IDE-specific files if they could also be managed in a more general way**.
+			+ In particular, environment variables should be managed in a .env file!
