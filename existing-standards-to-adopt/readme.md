@@ -16,6 +16,7 @@
 		+ Automating security and compliance: ?
 	- Distributed systems
 		+ Reactive Manifesto
+    + Observability: ?
 	- Other components of engineering excellence?
 
 	- tools to automate quality

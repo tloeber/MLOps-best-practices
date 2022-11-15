@@ -10,7 +10,7 @@ S3 paths
       - solution: automate creation with template (first shell script, then service catalog)
       - advantage: `prefix` can refer to subtask, e.g., 'train' [not a great example, because we don't need an env variable for such short and standard names].
       - Advantage 2: Managing access control is easier at the bucket level.
-- Include “_name” in BUCKET_NAME, FILE_NAME, etc?
+- Include “_name” in BUCKET_NAME, FILE_NAME, etc.?
   - Pro: explicitly distinguish names from object references
   - Con: more verbose
   - Decision: Only include such postfixes as a last resort if there is no more direct way to make data type apparent. Usually, these are constants, so capitalization already tells us we're not dealing with a reference. In other cases, the use of type hints can disambiguate what we're dealing with.

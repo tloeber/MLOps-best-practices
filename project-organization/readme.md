@@ -2,9 +2,10 @@
   - References: try to re-create, pickle otherwise
   - configurations: env variables
   - data: pickle
-- How do we ensure local directories needed exist? (e.g.,for new user cloning repo, or same user running it locally or on different notebook instance etc)
+- How do we ensure local directories needed exist? (e.g.,for new user cloning repo, or same user running it locally or on different notebook instance etc.)
   - Decision: It's ok to initially create directories ad hoc, but this needs to eventually happen in a dedicated setup script. Intermingling this setup code with the actual processing logic makes the latter harder to understand.
 - Organize local copies of data (e.g., on a notebook instance) into subfolders?
   - Pro: Easier to manually look for certain files (e.g., during debugging). Easier to identify stale files that can be deleted.
   - Con: Requires extra code to ensure all the subfolders needed exist.
-  - Decision: Don't – initially tried it but it ended up adding too much overhead having to ensure directories needed exist. It's not complicated, but boilerplate code like this detracts from the main logic, making it harder to understand the real intent. Unless it's in S3, all local data can be considered temporary. Only create data folder, then just add extra info to file name.
+  - Decision: Don't – initially tried it, but it ended up adding too much overhead having to 
+    ensure directories needed exist. It's not complicated, but boilerplate code like this detracts from the main logic, making it harder to understand the real intent. Unless it's in S3, all local data can be considered temporary. Only create data folder, then just add extra info to file name.
