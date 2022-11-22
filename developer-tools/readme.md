@@ -29,12 +29,19 @@
     - Configurations are not spread out across as many files
     - Configuration is code is much better documented, and is considered a standard way to set 
 	  configurations.
+  - Easier to get started - so it will likely be easier to convince data scientists to swich to 
+	it from Jupyter notebooks. 
+  - Faster / more resource efficient (not a big issue, but definitely more convenient).
   - More favorable trend: VSCode has been improving more rapidly than PyCharm over the 
 	last few years. While the two are roughly equal now, it makes it likely that VSCode will 
 	surpass 
 	PyCharm over the coming years.
 
-- Decision:
+- Preliminary decision:
   - VSCode wins, because it offers roughly the same features, but all of them for free. In 
 	addition, it makes it easy to manage its configurations as code, which [I think is essential.
 	](../DevSecOps/readme.md#Applying DevOps principles to managing laptops)
+  - However, look more deeply into PyCharm's support of Jupyter Notebooks. In case it has 
+	a much better experience, we may have to reconsider! (Challenge: Jupyter 
+	Notebook support is improving at a rapid pace at the moment, so any lead may only be 
+	temporary.) 
