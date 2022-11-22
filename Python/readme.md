@@ -116,3 +116,15 @@ coding practices as much as possible (and ideally also give better performance).
       (though I 
       have occasionally found the need to add a few simple methods), whereas proper classes 
       encapsulate data and expose behavior. (See 'Clean Code' by Uncle Bob.)
+
+
+# Proper logging
+- `logger.error` vs `logger.excception`: These two are often confused, because their behavior is 
+so similar. Here is the key point: **If handling an exception, log it using `logger.
+exception`. This ensures the stack trace is included in the logged message!**
+(While it's also possible to include the stack trace using
+`logger.error(msg, exec_info=True)`, there is no need to rely on this more verbose workaround.) 
+Outside of exception handling, use `logger.error`. (Again, you could in principle also use 
+  `logger.exception`, but this adds an awkward `NoneType: None` to the logged message because the 
+  stack trace is missing.) 
+
