@@ -60,6 +60,7 @@ risk that code works on our laptop but not on AWS.
     purposes.) 
 
 ### Run code on EC2 and connect local IDE using SSH
+- Here is an [example setup that automates instance start and shutdown.](https://aws.amazon.com/blogs/architecture/field-notes-use-aws-cloud9-to-power-your-visual-studio-code-ide/) 
 - Pros: 
   - Can run on Linux, even if our laptops use different OS
     - Environment setup is easier and much quicker.
@@ -70,7 +71,12 @@ risk that code works on our laptop but not on AWS.
         small data set for dev 
       anyway, and once it's working we may as well run it from Sagemaker Studio).
 
-- Con: Slightly more overhead.
+- Cons: 
+  - Slightly more overhead.
+  - Have to worry about security.
+    - If you lock ssh ingress down to your IP, have to update security group whenever your IP 
+      changes or you work from elsewhere.
+    - Can use AWS Systems Manager to ssh into private subnet, but more overhead.
 
 ### Create local environment
 - Pro: Least overhead for day-to-day use, not dependent on Internet and VPN.

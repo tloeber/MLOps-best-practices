@@ -2,7 +2,7 @@
 - The most explicit option is to only return an exception if it is not expected from the 
   method's contract. On the other hand, if an exception is a possibility - e.g., looking up a 
   value in the dictionary without first checking if the key exists – we instead return None. 
-  Hey hey you somethingThe main advantage of this approach is that it 
+  The main advantage of this approach is that it 
   allows us to *distinguish these two kinds of situations*: If we get None, we don't have to worry 
   whether something went wrong, because it's not a "real" exception.
 - **In a language like Python - where you can not tell from a function's signature which 
