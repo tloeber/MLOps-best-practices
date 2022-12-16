@@ -220,9 +220,7 @@ Overall, I think it's hard to make a general recommendation at this point.
   companies for whom this is a priority (early-stage start ups, as well as 
   potentially even established companies where the business side is not willing to make the 
   investment before they see any concrete value).
-- for whom 
-  ML is not at their core
-
+- 
 
 
 ## Running infrastructure on Kubernetes?
