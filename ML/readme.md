@@ -269,11 +269,19 @@ different sides, and that everyone still needs to have an understanding of the b
 whole lifecycle, it's clear that each of these fields is complex enough to warrant 
 deep specialists.
 
-But what about a small startup that can afford to have dedicated specialists for each of these 
+But what about a small startup that can't afford to have dedicated specialists for each of these 
 fields, you may ask? As I argued in the previous section, the answer is simple: In that case, 
 you definitely shouldn't run your infrastructure on Kubernetes at all! If you have a small team, 
 you don't want your engineers to spend most of their time on something like setting up and 
 managing infrastructure that doesn't create any immediate business value. 
+
+By contrast, which basics of software engineering should data scientists learn?
+- writing *clean* code (an understanding the importance of *maintainability*)
+- automatic testing 
+- design patterns
+- DevOps (high-level)
+These are things everyone on the team needs to know. We don't want to have separate software 
+engineers who constantly rewrite bad code and fix that design, etc.
 
 
 ### Should _ML engineers_ know Kubernetes?
