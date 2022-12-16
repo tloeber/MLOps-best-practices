@@ -226,6 +226,11 @@ Overall, I think it's hard to make a general recommendation at this point.
 
 
 ## Running infrastructure on Kubernetes?
+TLDR Only makes sense in a limited set of use cases: 
+- Need: Off-the-shelf infra is not enough, because ML is at the business core, so it makes sense 
+  to invest 10X in order to get a 1% improvement.
+- Technical ability: Able to attract superior talent (because everything becomes much harder)
+- Financial ability: Able to have dedicated DevOps team focused on Kubernetes
 
 ### Should data scientists know Kubernetes?
 Surprisingly, this is still a question where you hear arguments for both sides. However, I think 
