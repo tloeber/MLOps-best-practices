@@ -1,7 +1,7 @@
 # Creating a state-of-the-art ML ecosystem
 - **Most companies are overly focused on modeling, which is just a small piece of the overall ML 
   lifecycle.**
-Modeling is increasingly becoming a solved problem, as the best solutions for many use cases are 
+Modeling is increasingly becoming a solved problem, as the best models for many use cases are 
   becoming increasingly standardized, and we can increasingly leverage pre-trained models 
   (especially in NLP and computer vision). 
   - AutoML & Declarative ML:
@@ -12,6 +12,8 @@ Modeling is increasingly becoming a solved problem, as the best solutions for ma
   even incrementally better models on revenue. My point is, however, that this is the exception 
   rather than the norm (and Negative even for these types of use cases, figuring out how to 
   reliably productionize ML models is a challenge that has to be solved _first_).  
+- Manual feature engineering is also becoming less important as available data size grows, 
+  because this allows us to use neural networks which automate feature engineering. 
 
 ## Build vs. Buy (vs. Open-Source)
 ### The old Build vs. Buy Discussion
@@ -55,27 +57,28 @@ Let's now dive into the reasons why buying is generally better than building:
   for digital goods such as software, because most of the cost associated with their production is 
   fixed cost, whereas their marginal cost is near zero** (i.e., they can be shared at virtually 
   zero cost). While we need to also remember that much of the lifetime cost of software systems is 
-  in their maintenance, not their initial creation, these economies of scale also extend to the 
-  ongoing maintenance: Firstly, some of the maintenance is generic, and thus many different 
+  in their maintenance - not their initial creation - these economies of scale also extend to the 
+  ongoing maintenance, albeit to a lesser extent: Firstly, some of the maintenance is generic, and 
+  thus many different 
   users can benefit from it (e.g., staying up-to-date with security vulnerabilities, or adding new
-  features). But even for maintenance tasks isolated to a specific client - such as production 
-  support for infrastructure issues - there are still some economies of scale because of the 
-  _specialized knowledge_ required.
+  features). Secondly, even for maintenance tasks isolated to a specific client - such as 
+  production support for infrastructure issues - there are still some economies of scale 
+  because of the _specialized knowledge_ required.
 - The previous two points imply that buying is generally more *efficient* than building. (Even if 
   you factor in [transaction costs](https://en.wikipedia.org/wiki/Transaction_cost), the 
   advantage of buying is generally so big that transaction costs are negligible.) However, 
   *just because managed solutions are more efficient does not mean that they are automatically 
   better and cheaper.* What it does imply, though, is that it is generally *possible* to provide 
   better solutions at a lower price, and in a competitive market economy these business 
-  opportunities will not remain unfilled for very long. Still, particularly in the short term, 
+  opportunities will not remain unfilled for very long.  
+  Still, particularly in the short term, 
   suboptimal pricing strategies that don't make a solution attractive to all different kinds of 
-  customers can persist for surprisingly long times. (E.g., 
-  pricing may not be sufficiently vary with scale, and thus only 
+  customers can persist for surprisingly long times. (E.g., pricing may not sufficiently vary with scale, and thus only 
   makes sense for large customers). *Therefore, we will still have to do the math ourselves to 
   figure out if it is worth it - but if we arrive at the solution that it's cheaper to build it 
   ourselves, we should be skeptical and double-check our numbers and assumptions* (e.g., did we 
-  account for the risk from the well-known fact that
-  most software projects take much longer and are much more expensive than initially estimated? 
+  account for the risk from the well-known fact that most software projects take much longer and 
+  are much more expensive than initially estimated?
   Did we factor in the cost associated with the fact that the business will only be able to draw 
   value from our homegrown solution a lot later than if we bought a prebuilt solution, because it 
   takes longer to build than to buy?)
