@@ -10,6 +10,7 @@
     lock in 
     (even if you use Databricks' commercial offering, the delta format is open source); lower costs.
 - Like for machine learning, it usually makes sense to leverage the benefits of ***managed* 
-  offerings** - at the moment probably Databricks, together with more specialized providers. Managing infrastructure is undifferentiated 
+  offerings** - at the moment probably Databricks (potentially in combination with some more 
+  specialized providers). Managing infrastructure is undifferentiated 
   heavy lifting, which - in the era of the cloud - is more efficiently provided by specialized 
   companies that can leverage economies of scale.
