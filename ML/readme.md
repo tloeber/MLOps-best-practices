@@ -1,16 +1,14 @@
 # Creating a state-of-the-art ML ecosystem
-- **Most companies are overly focused on modeling, which is just a small piece of the overall ML 
-  lifecycle.**
-Modeling is increasingly becoming a solved problem, as the best models for many use cases are 
-  becoming increasingly standardized, and we can increasingly leverage pre-trained models 
-  (especially in NLP and computer vision). 
+- **Most companies are overly focused on *modeling*, which is just a small piece of the overall ML 
+  lifecycle.** Modeling is increasingly becoming a solved problem, as the best models for many use cases are 
+  becoming standardized, and we can often leverage pre-trained models. 
   - AutoML & Declarative ML:
   - **MLOps: This is where we should focus our investment, in order to reliably productionize 
     models!**
 - That being said, there are use cases where modeling needs to be a focus area as well: 
   These are companies which compete on the basis of ML, and there is an immediate impact of 
-  even incrementally better models on revenue. My point is, however, that this is the exception 
-  rather than the norm (and Negative even for these types of use cases, figuring out how to 
+  even incrementally better models on the bottom line. My point is, however, that this is the *exception 
+  rather than the norm* (and even for these types of use cases, figuring out how to 
   reliably productionize ML models is a challenge that has to be solved _first_).  
 - Manual feature engineering is also becoming less important as available data size grows, 
   because this allows us to use neural networks which automate feature engineering. 
@@ -191,7 +189,7 @@ solutions makes sense:
     value most quickly - but overall I feel like it does not deliver on its promises, and is often
     frustrating to use. My main critique is that it is not designed with proper interfaces between 
     the different components, so they don't fit together as much as you would expect from 
-    something claiming to be an end-to-end platform – which defeats the whole point. 
+    something claiming to be an end-to-end platform – which kind of defeats the whole point. 
   - For the minority of companies who are on Google cloud, **Vertex AI** is probably the strongest 
     offering, since it's basically a managed version of Kubeflow. I'm not familiar enough with it, 
     though, to provide any recommendation on it.
@@ -204,60 +202,56 @@ solutions makes sense:
   - I'm not familiar with Azure's ML offerings, but the fact that discussions of ML platforms 
     usually only bring up Sagemaker and Vertex AI make me skeptical whether Azure has a viable 
     option.
-- In terms of vendor risk, it's probably at tie:
+- In terms of vendor risk, it's probably a tie:
   - On the one hand, the major cloud providers and Databricks have been around for long enough 
-    maybe don't have to worry about them going away soon. By contrast, virtually all of the 
-    companies solving Look at specialized problems in ML lifecycle 
+    that you don't have to worry about them going away soon. By contrast, virtually all of the 
+    companies solving specialized problems in ML lifecycle 
     have sprung up in the last few years, and it is not clear yet how much consolidation will take 
     place and who the winners will be.
   - On the other hand, much of the specialized offerings tend to be managed services on top of 
-    fun open-source core product. So in the worst case, even if these companies go away, the 
-    open-source frameworks they are based on will not go away quickly. The same is true for 
+    a core open-source product. So in the worst case, even if these companies go out of business, the 
+    open-source frameworks they are based on will not go away with them. The same is true for 
     Databricks. (While Kubeflow, on which Vertex AI is based, is also open source, it is orders 
     of magnitude harder to maintain yourself, compared to the specialized tools.)
   
-- That said, while end-to-end platforms may _do_ the job, the question do we want to **pick 
+- That said, while end-to-end platforms may _do_ the job, the question, is do we want to **pick 
   the *best* tool for each job** by mixing-and-matching specialized solutions for different 
   stages of the ML lifecycle. E.g., use Tecton's feature platform, MLFlow for 
   experiment tracking and as a model registry, BentoML for model serving, etc. (Of course, you 
   still have the option of using a _subset_ of your cloud provider's ML platform for specific parts 
-  of the job, if that makes sense). Specialized providers live and die by the quality of their 
-  product, so they have a greater 
-  incentive than cloud providers for whom their ML tooling is just a small part of their 
-  offering, and thus may not necessarily be their focus area. 
+  of the job, if it makes sense to do so). Specialized providers live and die by the quality of their 
+  product, so they have a greater incentive to offer the best experience. By contrast, for the major 
+  cloud providers, ML tooling is just a small part of their offering, and thus it may not 
+  necessarily be their focus area. 
 - **Note that "best" may not only mean that you get additional 
-  features, but it can also mean that you get a better user experience or ability to iterate on 
-  more quickly.** 
-  - If it was just about getting more features, the answer would be more 
-    straightforward: It's the best choice for companies that need to deliver value very quickly
-    (early-stage start-ups, as well as potentially even established companies where the business side
+  features, but it can also mean that you get a better *user experience* or *ability to iterate on 
+  more quickly*.** 
+  - If it was just about getting additional features, the answer would be more 
+    straightforward: In that case, end-to-end solutions would probably be the best choice for 
+    companies that need to deliver value very quickly (early-stage start-ups, as well as potentially even established companies where the business side
     is not willing to make the investment before they see any concrete value).
   - However, if it also gives you a better user experience and the ability to iterate 
     more quickly, going with specialized solutions may pay off very quickly (potentially even 
-    within say a couple of months), so it could be the preferred option for most use cases.
+    within say a couple of months). In that case, it could be the preferred option for most use cases.
 - A final consideration is _how difficult_ it is to set up and maintain an ML platform 
   consisting of specialized solutions, compared to going with your cloud provider's default 
-  offering. In addition to the cost and time aspect discussed before, it raises the question 
-  whether it would require a higher level of talent than companies can retain.
+  offering.  If this difference is substantial, it raises the question 
+  whether it would require a higher level of talent than some companies can retain.
   
-
 
 ### Conclusion
 Overall, I think it's hard to make a general recommendation at this point. In the end, it
 mainly comes down to the question _how much better_ specialized providers are, _in 
 what ways_ they are better, and _how much extra work_ they require. Unfortunately, a clear 
-answer to these questions has emerged yet, because the landscape is constantly changing. 
-- An end-to-end platform allows you to deliver value more quickly, so it's a great choice for
-  companies for whom this is a priority   
-- 
+answer to these questions hasn't emerged yet, because the landscape is constantly changing. 
 
 
 ## Running infrastructure on Kubernetes?
-TLDR Only makes sense in a limited set of use cases: 
-- Need: Off-the-shelf infra is not enough, because ML is at the business core, so it makes sense 
+TLDR: **Only makes sense in a limited set of use cases:** 
+- Need: Off-the-shelf infra is not enough, because ML is at the business's core, so it makes sense 
   to invest 10X in order to get a 1% improvement.
 - Technical ability: Able to attract superior talent (because everything becomes much harder)
-- Financial ability: Able to have dedicated DevOps team focused on Kubernetes
+- Financial ability: Able to pay for a dedicated DevOps team focused on Kubernetes
 
 ### Should data scientists know Kubernetes?
 Surprisingly, this is still a question where you hear arguments for both sides. However, I think 
@@ -269,10 +263,10 @@ I think the main reason goes back to the general insight that to solve complex e
 problems, **we need to decompose problems in a way that we can divide labor amongst people who 
 specialize in different parts of the problem**. To enable the specialization, we come up with 
 stable interfaces that provide contracts for how the different parts of the system interact. While 
-we might have to revise these interfaces occasionally, for most of the time most engineers can 
+we might have to revise these interfaces occasionally, for most of the time, most engineers can then
 focus only on their respective domain - which is already hard enough if we're pushing boundaries. 
 
-The best example I can think of is how we make some as complex as the Internet work: As a software 
+The best example I can think of is how we make something as complex as the Internet work: As a software 
 engineer, I mainly have to understand the application layer (e.g., http protocol) and to a 
 lesser extent the transport layer (e.g., TCP). However, I don't 
 have to worry about how packages will be routed to the right address, and I 
@@ -293,8 +287,8 @@ have involved in the data science process, but also **which of these roles can b
 specialists, and which aspects are so basic and intertwined with the core data science work that 
 every member of the team is expected to master them.** 
 
-One natural division specializations that has emerged is between software engineers writing code 
-and infrastructure-, security- and DevOps engineers (or in earlier times, system admins)
+One natural division of specializations that has emerged is between software engineers writing code 
+on the one side, and infrastructure-, security- and DevOps engineers (or in earlier times, system admins)
 focusing on different aspects of the infrastructure side. While the discussions around DevOps 
 and DevSecOps have shown that there often is still a need for collaboration between the 
 different sides, and that everyone still needs to have an understanding of the basics of the 
@@ -303,28 +297,30 @@ deep specialists.
 
 But what about a small startup that can't afford to have dedicated specialists for each of these 
 fields, you may ask? As I argued in the previous section, the answer is simple: In that case, 
-you definitely shouldn't run your infrastructure on Kubernetes at all! If you have a small team, 
+you probably shouldn't run your infrastructure on Kubernetes at all! If you have a small team, 
 you don't want your engineers to spend most of their time on something like setting up and 
-managing infrastructure that doesn't create any immediate business value. 
+managing infrastructure that doesn't create any immediate business value. In the exceptional case 
+where Kubernetes is still needed to manage special use cases, you probably want at least one DevOps engineer specializing in it - it would be a mistake to think it's lean to skimp on specialists, because it will take non-specialists much longer to do the same task (and the hourly cost is approximately the same).  
 
-By contrast, which basics of software engineering should data scientists learn?
-- writing *clean* code (an understanding the importance of *maintainability*)
-- automatic testing 
-- design patterns
+By contrast, which are the **basics of software engineering should data scientists learn**?
+- writing ***clean* code** (an understanding the importance of *maintainability*)
+- automatic **testing** 
+- object-oriented **design patterns**, etc.
 - DevOps (high-level)
-These are things everyone on the team needs to know. We don't want to have separate software 
-engineers who constantly rewrite bad code and fix that design, etc.
+**These are things everyone on the team needs to know, because they can't easily be outsourced to specialists.**
+We don't want to have *separate* software 
+engineers who constantly rewrite data scientists' throw-away code and fix bad design, etc.
 
 
 ### Should _ML engineers_ know Kubernetes?
 There is obviously more of a case to be made that _machine learning engineers_ need to know 
 Kubernetes (K8s). However, I would still argue that:
 - not all ML engineers need to know K8s, because K8s only makes sense as an infrastructure 
-  solution for a small subset of companies, and  
-- even for ML engineers who work with ML platforms that _are_ deployed on K8s, they don't need to 
-  be K8s experts. K8s is a complex beast, and it requires dedicated DevOps engineers to tame.
+  solution for a small subset of companies (as argued above), and  
+- even for ML engineers who do work with ML platforms that are deployed on K8s, they don't need to 
+  be K8s *experts*. K8s is a complex beast, and it requires dedicated DevOps engineers to tame.
   It's a long way from understanding its basic architecture and being able to 
-  deploy to it, to troubleshooting complex networking issue (which unfortunately not a rare 
+  deploy to it, to troubleshooting complex networking issue (which unfortunately is not a rare 
   occurrence).
   The latter problems require experts that work with K8s full-time - having ML engineers  
   solve these problems themselves detracts from their core function. If a company doesn't have 
@@ -332,9 +328,18 @@ Kubernetes (K8s). However, I would still argue that:
   should not be on K8s.
  
 ## Which specific tools to pick
-- I'm currently exploring one tool that may be superior enough to Sagemaker and Vertex AI to 
-  potentially change my mind in the Future: **Ludwig**, a **Declarative ML** framework open-sourced by 
-  Uber. While it does help you manage distributed training using [Horovod](https://github.com/horovod/horovod), having to worry about the infrastructure is still something that's better to avoid if possible. This has been addressed recently when its creators came out with a commercial offering around Ludwig and Horovod, called **Predibase**, which should take care of much of the undifferentiated heavy lifting. I'm very impressed by Ludwig, but I haven't used Predibase yet, so I can't comment on how well it works and how affordable it is.
+I'm currently checking out how to piece together a better alternative to Sagemaker. The main questions 
+I'm trying to answer is how much better (and "better" what ways) of a platform you can build this way,
+and how much more overhead this adds, and whether it speeds up your work once set up. Specific tools I'm 
+currently evaluating:
+- Metaflow
+- BentoML
+- I'm currently exploring whether **Declarative ML** is mature enough. I think once it is, it may be 
+  the best approach for most ML use-cases. The main tool currently available is **Ludwig**, a
+  framework open-sourced by Uber. A related open-source tool is 
+  [Horovod](https://github.com/horovod/horovod), which helps manage distributed training. There is also a 
+  commercial offering around Ludwig and Horovod, called **Predibase**. I'm very impressed by Ludwig, but I haven't used Predibase yet, so I can't comment on how well it works and how affordable it is.
+- Next tool on my list: MLFlow
 
 ## Final Thoughts
 - **Invest the time-savings you get from these suggestions** (leveraging free and
