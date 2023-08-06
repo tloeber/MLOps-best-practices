@@ -1,3 +1,11 @@
+# Existing standards to adopt	
++ CI/CD:
+    * CI means integrating to main branch at least once per day!
++ Infra-as-Code: ?
++ Automating security and compliance: ?
++ Observability: ?
+
+
 # Applying DevOps principles to managing laptops
   - Rationale:
     - Speeding up onboarding
@@ -22,6 +30,6 @@
 		  * Clone engineering standards and team standards
 		  *
 
-#Observability
+# Observability
   - Use OpenTelemetry, because by programming to a standard interface, we reserve the freedom 
     to switch out the particular backends as needed.

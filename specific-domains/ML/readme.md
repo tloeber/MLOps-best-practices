@@ -1,3 +1,7 @@
+# Existing standards 
+- Google's Rules for ML
+- AWS Well-architected framework (ML lens)
+
 # Creating a state-of-the-art ML ecosystem
 - **Most companies are overly focused on *modeling*, which is just a small piece of the overall ML 
   lifecycle.** Modeling is increasingly becoming a solved problem, as the best models for many use cases are 

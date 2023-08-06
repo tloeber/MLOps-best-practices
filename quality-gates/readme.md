@@ -1,5 +1,4 @@
-Shifting left
-
+# Shifting left
 - Automated tests
   - Unit tests
     - TDD or not?
@@ -16,7 +15,7 @@ Shifting left
 
 - Code complexity checks?
 
-Tools:
+# Tools:
 - pylint:
   - Track config in version control to make sure it behaves identically for everyone
   - Overriding false positives:
