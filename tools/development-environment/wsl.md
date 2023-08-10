@@ -10,3 +10,4 @@ I have repeatedly encountered the following issues, and have decided that it's n
 - Error when trying to use `sudo`: `user not in sudoers group`
   - The key is to start a privileged WSL shell from the Windows environment: open a command prompt and enter `wsl --user root`
   - Now you can add back the sudo privileges again: `usermod -aG sudo ${username}`
+  - Restart WSL: `wsl --shutdown`
