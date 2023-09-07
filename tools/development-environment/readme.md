@@ -16,16 +16,8 @@ Note: **The problem of dependency management is entangled with the problem of se
 
 ## How to achieve these goals?
 ### Environment separation
-#### Containers
-Advantages:
-- Offer a greater level of isolation
+This can either be achieved by using [**containers**, which I discuss in a separate section](../../best-practices/DevSecOps/containers/readme.md) or by leveraging **virtual environments**.
 
-Disadvantages:
-- Make certain things more difficult (especially for people with less of a software engineering background, such as data scientists), e.g. debugging.
-
-Conclusion:
-
-#### Virtual environments
 ### Separately tracking abstract and concrete dependencies
 - Track both [*abstract* and *concrete* dependencies](https://martin-thoma.com/python-requirements/#abstract-dependencies) in version control.
   - **Concrete dependencies** specify the precise version of each package (including the repository used) used, and  they also include all *indirect* dependencies. This is what you get by using `pip list` or `pip freeze > requirements.txt`. Thus, it becomes straightforward to:
@@ -52,6 +44,9 @@ Conclusion:
 
 
 ## Recommended Tools
+### Libraries or non-containerized applications
+The reason that we lump in libraries with non-containerized applications is this: Whether a library will end up being installed inside a container or outside of one, the point is that **we don't usually distribute libraries as a container image**.
+
 There are two main tools that offer an easy wrapper around both virtual environments as well as package management: Pipenv and Poetry. In other words, they replace both venv and pip. Both are easy to use, and do what they promise to do, so I can recommend them both. While I know most engineers aren't  in the mood to read documentation and learn yet another tool, it does not require much time to get familiar with, and will save you from a lot of headaches down the line. So it is definitely worth it!
 
 ### Pipenv
@@ -60,7 +55,17 @@ There are two main tools that offer an easy wrapper around both virtual environm
 
 ### Poetry
 
-### Side note: Do you even need these when using containers?
+### Containerized applications
+- The _environment_ management aspect of tools such as Pipenv becomes redundant when using containers (since there will only be a single-environment in a container anyway). However, it doesn't really hurt performance either (as far as I know).
+- For _dependency_ management, both tools clearly become less essential, because containers solve the problem of easily running the application on another machine (and keep track of _concrete_  dependencies by their very nature). **This frees up the requirements.txt (or environment.yml) to track only _abstract_ dependencies**. As a result, it becomes easier to update existing dependencies or add additional dependencies (because abstract dependencies impose much fewer constraints).
+- Benefits of still using Pipenv or Poetry:
+  - The main advantage they bring in a containerized setting is that they make it **easy to also re-create a maximally-similar environment *outside* of containers**. For example, this allows the data science team to get started with development without having to know containers, while it is still easy for ML engineers to containerize their models downstream. I'm not sure if this division of labor should actually be the goal, and what sort of unexpected problems this workflow will produce. Nevertheless, there are some organizational settings where leaving data scientists out from containerization is the best compromise we can achieve. In these cases, using Pipenv or Poetry together with containers is a worthwhile strategy.
+  - A secondary advantage of these tools is that they **allow separating prod from non-prod dependencies**. Thus, they allow us to have prod and non-prod versions of a given container image, which are identical except in the additional non-prod dependencies. Usually this will not be an important enough consideration, especially because this is slightly more risky because it introduces another point of failure. However, we can conceive of situations where this may push us towards using one of these tools instead (e.g., if we want to minimize latency of autoscaling at any costs).
+- Disadvantages:
+  - Since there should not be any performance impact (which we should verify though!), the only cost is that engineers need to be familiar with yet another tool. This is usually not a big deal, because they are not complicated, and many Python developers already know them anyway. Even if they don't, it is good to know Poetry in any case, since it is a great tool for _packaging_ Python projects (which is something that remains important for libraries, even when all _applications_ are containerized).
+- Preliminary conclusion: If using containers, these tools generally become **optional**. Even though the costs of using these tools are small or nonexistent, their benefits generally are small or nonexistent as well. Thus, my preliminary recommendation is to only use these where there is a tangible benefit:
+    - If it is beneficial to retain the ability to run the same application outside of containers as well; 
+    - If we want to be able to create multiple versions of container images with the same set of core dependencies but different groups of additional dependencies.
 
 
 ## Other tools for niche purposes

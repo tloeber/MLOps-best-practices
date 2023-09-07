@@ -1,0 +1,37 @@
+# Containers
+Let's first consider the simplest use of containers without a complex container orchestration system. An example would be an API deployed to AWS ECS as a single container, the use of AWS Sagemaker Custom Containers, or deploying an AWS Lambda Function from a custom container image.
+
+## Advantages
+- Greater level of isolation, because containers package everything but the kernel -> Identical behavior is basically guaranteed.
+- Easy to run same application across different machines, and for the most part even between Linux and MacOS. 
+  - This is especially convenient when we require dependencies that cannot be managed by our main package manager. In the case of Python, pip can't handle non-Python dependencies – and while Python Wheels solve this problem, many Python packages do not take advantage of this newer functionality to bundle binary dependencies. (Likewise, conda can manage non-Python dependencies, but comes with a host of other challenges.)
+
+## Disadvantages
+- Make certain things more difficult (especially for people with less of a software engineering background, such as data scientists), e.g. debugging.
+- Changing the way things are done in an organization is disruptive and thus costly.
+
+## Conclusion
+- In general, containers are definitely worth adopting because they solve much more problems than they create. This is why they are becoming the norm for building production software applications.
+  - While people on the data science and ML side have more learning to do in order to become comfortable with containers, there is also a greater benefit to containerization in this field: This is because ML application tend to require a much greater number of dependencies (which increases the risk that dependency resolution fails), and in particular binary dependencies not packaged into Python Wheels (which makes installation complicated and fickle). This is especially true for deep learning applications.
+- To successfully move to containerization, it is essential that we are empathetic about the reservations some people may have, and that we come up with solutions that make moving to a  container workflow as easy as possible:
+  - At the most basic level, we should not require  that every data scientist becomes an _expert_ in containers, because this is simply not a realistic goal. Containerization should make the data scientist's life easier, not harder. It should save them from wasting countless hours battling dependency hell, and not supplant one familiar problem with a new and unfamiliar set of problems. Of course, we do need the data science team to learn at least the _basics_ of working with containers, so that they can make basic modifications such as installing an extra package without being dependent on another team. We probably would even want to have some members on the data science team with an _intermediate_ understanding of containers. However, the point is that:
+    - *the data science team is not expected to have the same level of proficiency with containers*. It is sufficient if it can perform everyday tasks itself. However, it still needs to have easy access to help from the engineering team if they are not able to troubleshoot a more complex problem themselves, or for making changes that require a more in-depth understanding of containers.
+    - When starting to transition to containers, it is essential that we spread out the learning in order to make the transition less overwhelming. To get started, it is sufficient if the data scientists can carry out their _core_ workflow using containers. Thus, we should not even expect them to learn anything that can wait, e.g. how to modify a Dockerfile, rebuild the image, and push it to the container registry. At this stage, is perfectly acceptable to simply install a new dependency in the Jupyter notebook. While this is definitely something we want to improve soon, we should deprioritize everything that can wait in order to make this change as easy as possible.
+
+# Container orchestration
+## Advantage:
+- Opens up a number of useful design patterns for building applications, from basic things such as making autoscaling quicker, to more complex architectures, such as leveraging a service mesh for connecting microservices.
+
+## Disadvantages
+- When we leverage the new design patterns that container orchestration systems make possible, it is very easy to generate complexity that requires an expert team of infrastructure engineers to maintain.
+  - While I think a _basic_ understanding of containers and container orchestration systems is easy enough to pick up for most software/data/ML engineers, the types of problems that commonly arise in a complex system of multiple containers communicating with each other require a more deep background in topics such as networking than most data and ML engineers, and many software engineers (depending on their specialty) are willing to pick up. Nor would this generally be worth their time, because it detracts too much from their core competence (remember that technical progress has generally been pushing engineers towards _higher_ levels of abstraction.)
+  - In cases where there would be a great business benefit to implementing a more complex container orchestration system, we need to carefully manage the risk that comes with such a system. 
+
+## Conclusion
+In my opinion, the overhead of managing container orchestration systems _themselves_ is too high for most companies, but I'm excited about various *higher-level* solutions built on top of open source tools that abstract much of the undifferentiated heavy lifting.
+  - I think AWS ECS is a great solution (where a true serverless architecture based on Lambdas does not do the job). With the arrival of [ECS Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in late 2022, ECS now offers a good way of communication between containers. (I was initially excited about AWS App Mesh, which promised to be a managed service mesh for ECS. However, when I looked into it in mid 2022, it did not seem to deliver on its promise to abstract most of the undifferentiated heavy lifting from the user.)
+  - "Managed" Kubernetes offerings such as AWS EKS, Google's GKE, or RedHat's OpenShift are another popular choice. However, note that these only manage the control plane, so a lot of the complexity still remains with the user. Thus, while I definitely think this is better than managing everything yourself, it is probably only a good choice for the few companies that:
+    - are able to attract and retain top engineers (because Kubernetes engineers are in high demand, and because this choice will probably require a higher level of engineering skills for other engineers developing the applications running on the cluster); AND are EITHER
+      - operating at a massive enough to make paying for a dedicated infrastructure team economical; OR
+      - are willing to pay a large amount for the small additional amount of customizability that managing your own cluster gives you.
+  - An interesting option is to use a managed offering of a *specialized* application running on Kubernetes. In the case of machine learning, the main reason to use Kubernetes is to run Kubeflow. Canonical offers managed versions of Kubeflow on the major cloud providers, e.g. on [AWS you can get it from AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-r627lvl3ub6em). I have not heard yet how well it works, but it seems worth looking into.
