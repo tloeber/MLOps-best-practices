@@ -17,6 +17,7 @@ I have repeatedly encountered the following issues, and have decided that it's n
     - The key is to start a privileged WSL shell from the Windows environment: open a command prompt and enter `wsl --user root`
     - Now you can add back the sudo privileges again: `usermod -aG sudo ${username}`
     - Restart WSL: 
-      - From cmd: `wsl --shutdown`
+      - Exit WSL to go back to cmd: `exit`
+      - From cmd, restart WSL: `wsl --shutdown`
       - Start Docker Desktop again
       - Restart VSCode
