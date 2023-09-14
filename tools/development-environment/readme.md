@@ -7,7 +7,7 @@ Note: **The problem of dependency management is entangled with the problem of se
 - Easy and quick install/project setup:
   - Easy to set up the project on a _new machine_ (exact replication): It should be easy for new engineers to set up and run the project themselves (by running only a few commands), so that we can easily onboard new team members. In addition, this also makes it much easier for other teams to contribute or take over the project when necessary.
   - Easy to _update_ dependencies: It should be easy to *update* the dependencies, so that can make sure our packages have the latest security patches.
-  - Easy to add _new dependencies_: it should be easy to install *additional* packages without running into dependency conflicts with existing packages.
+  - Easy to _add new_ dependencies: it should be easy to install *additional* packages without running into dependency conflicts with existing packages.
 
 ### Should-haves
 - Allow creation of different dependency *groups* (most importantly prod versus non-prod). Reason: By not having to install unnecessary packages in prod, we:
