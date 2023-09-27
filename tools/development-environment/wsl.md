@@ -37,3 +37,5 @@ I have repeatedly encountered the following issues, and have decided that it's n
       - From cmd, restart WSL: `wsl --shutdown`
       - Start Docker Desktop again
       - Restart VSCode
+
+- Zone-identifier files created for every file copied from Windows drive. I haven't found a quick way to stop this, sound like this is a bug that may be fixed at some point. So for now I'm simply deleting the zone identifier files by running ` find . -type f -name "*.Identifier" -exec rm -f {} \;`
