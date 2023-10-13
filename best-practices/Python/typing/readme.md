@@ -1,8 +1,10 @@
 # Typing
 Typing is key if you are using Python for anything more than one-off scripting. By using type 
-hints plus a type checker, we get a viable alternative to strongly typed languages! While 
-Python's type hints won't be used for performance optimization, they help catch a 
+hints plus a type checker, we get a viable alternative to strongly typed languages!  
+Python's type hints won't be used for performance optimization by default, though there are independent projects such as PyPy which have had some success with this. More importantly, however, they help catch a 
 plethora of errors through static code analysis, so they are essential to writing robust code. 
+Like automated tests, static typing also provide the further benefit of making it much easier to keep the code base healthy: Not only do types make automated factory tools more powerful, because they provide additional semantics to our IDE, but static typing also provides an additional safety net that greatly reduces the risk that refactoring will break production, hence reducing the incentive to push our problems into the future. Similarly, having access to static analysis makes keeping dependencies up to date much easier, because our IDE can alert us right away if any package upgrade resulted in changed function/method/class signatures which are incompatible with our code.
+
 Mastering typing requires only a small upfront investment but quickly pays off: You can save 
 a lot of time, as the IDE can alert you to your errors right as you make them. Due to the
 *instant* nature of this feedback - which has been shown to be of vital factors in 
@@ -14,6 +16,11 @@ comments or docstrings,
 we all know that it's virtually impossible to force everyone to keep these up to date. By 
 contrast, type hints can be enforced in the CI/CD pipeline - so they offer the only realistic 
 solution to keep documentation of types up to date!
+
+Finally, they also provide these extra benefits:
+- You need to write less unit tests to assert the same behavior (because you can focus on testing only valid input types, and can rely on static analysis to automatically catch invalid types.)
+- enables better IDE autocompletion
+- Enables IDE to provide better refactoring recommendations
 
 By the way, type hints in Python are similar to Java's way of adding annotations such 
 as `@Nullable` or `@NotNull` to make the code more robust against NullPointerExceptions.  
