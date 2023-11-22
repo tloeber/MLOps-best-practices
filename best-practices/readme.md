@@ -1,3 +1,3 @@
 # The big picture: Leveraging engineering principles to manage complexity
 
-I currently keep much of my most recent arguments in slide decks; see the PDFs in this folder for a snapshot.
+Currently, some of the most recent arguments are only in slide decks; see the PDFs in ../presentations for a snapshot.
