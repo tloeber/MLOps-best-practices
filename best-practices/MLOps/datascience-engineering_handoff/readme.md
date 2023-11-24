@@ -1,19 +1,18 @@
 # Integrating data science and ML engineering: Designing a collaboration and handoff process between data scientists and ML engineers
 
--
-
 - ## Challenge: Different needs of data science vs ML engineering
 
--
 - In both we want agility – but this is achieved in different ways:
   - In data science, we achieve agility through the explorative and iterative notebook workflow.
-  - By contrast, for a production software system to stay agile, we require clean code, type safety, moving away from notebooks, and loose coupling between components.
-- -> **Challenge: the former does not automatically scale into the latter**
+  - By contrast, for a production software system to stay agile, we require clean code, type safety, moving away from notebooks, and loose coupling between components (e.g., stable interfaces).
+- -> **Corollary: the former does not automatically scale into the latter**
   - What leads to agility in model training leads to a lack of agility in model deployment and maintenance.
   - Different best practices / quality standards for each
   - Need to find a good process for collaboration and handoff
 
 - ## Side note on terminology: What about ML scientists?
+
+I don't like arguing about terminology, but unfortunately we have to get rid of source of confusion first...
 
 - “ML scientist” vs “ML engineer”
   - Confusingly, ML scientists  are often called "ML engineers".
@@ -27,29 +26,29 @@
 ## Conflicting best practices in data science and ML
 
 - Starting point: Need to acknowledge this dilemma:
-  - unique needs of both sides (previous slide)
-  - unique talents of both sides (division of labor)
+  - unique *needs* of both sides (as we just discussed)
+  - unique *talents* of both sides (division of labor)
 - Next step: Codify best practices / quality standards separately for each side.
-- Keep in mind: How to structure incentives
+- ~~Keep in mind: How to structure incentives~~
 
 ### Data science vs engineering
 
-- Difference from engineering:
+- How data science *differs* from engineering:
   - explorative and iterative -> notebook workflow
   - Higher importance of domain expertise
     - Do these data make sense?
     - What way of computing this feature makes the most sense from a domain perspective?
-- How data science supplements engineering:
-  - Exploring the data by someone with domain expertise can:
+- How data science *supplements* engineering:
+  - Exploration of the data by someone with domain expertise can:
     - surface problems
     - create new ideas
-  - Any resulting changes should be addressed:
-    - using production-grade fixes rather than hacks (implemented by engineers, based on insights from data scientists)
-    - at the source (rather than each data scientist reinventing the wheel by performing the same data cleaning downstream)
+  - But any changes resulting from these insights should be addressed:
+    - using *production-grade* fixes rather than hacks (implemented by engineers, based on insights from data scientists)
+    - at the *source* (rather than each data scientist reinventing the wheel by performing the same data cleaning downstream)
 
 ## Why not all engineering best practices apply to data science
 
-- Applying a specific engineering best practice on data science productivity can be:
+- Applying a specific engineering best practice in data science can be:
   - Counterproductive: specific needs of the data science process
   - Productive - but there may be hurdles to adoption:
     - adoption cost (can we lower it sufficiently?)
@@ -70,55 +69,77 @@ Some engineering practices are too constraining (their cost is not offset by lar
 ### Why other engineering best practices are relevant to data science
 
 - Even though data science code is more short-lived, and long-term maintainability is thus less important, changeability is still important due to the iterative nature of the explorative workflow.
--
+
+## Codifying best practices
 
 ### Shared best practices
 
-- Must have:
-- Should have:
-- Would-like to have:
-- (Does not need to have:)
+- Must-haves
+- Should-haves
+- Would-like-to-haves
+- Does-not-need-to-haves
 
-### Data science best practices
+### *Data science* best practices
 
-#### Must have
+#### Must-haves
 
 - Quick & easy dev setup
 - Iterative and interactive workflow
 
-#### Should have
+#### Should-haves
 
 - Clean code
 - Invest time to find good data-science tools for job
-- Use engineering tools determined to be worth the investment (engineering team should do evaluation, recommendation, and setting up)
-  - leverage power of IDE (rather than notebook in browser)
+- Use engineering tools determined to be worth the investment
+  - engineering team should help with tool evaluation, recommendation, and set up
+  - Examples: Use type hints, depending on maturity
+  - leverage the power of a proper IDE (rather than notebook in browser)
 
-#### Would-like to have
+#### Would-like-to-haves
 
 - Leverage design patterns to achieve loose coupling between components
 - Trusted test suite (automated unit and integration/acceptance tests); automated data validation, static analysis
--
 
-#### (Does not need to have:)
+#### Does-not-need-to-haves
 
-## ML Engineering best practices
+## *ML Engineering* best practices
 
 ### Must have
 
 - Clean code
+  - Rationale:
+    - Code is read much more of than written -> it should be optimized for readability.
+    - Reduces bugs.
+    - Increasing Agility, because it makes code easier to change.
+    - Overall, reduces maintenance cost (which is majority of the cost of a typical software project)
 - Leverage design patterns to achieve loose coupling between components
+  - Rationale:
+    - Greatly reduces complexity, thereby ensuring code stays maintainable (reduces cost and risk, while increasing speed of feature implementation)
+
 - Trusted, automated test suite
-  - unit  tests
-  - integration/acceptance tests
-  - data validation
-  - static analysis
+  - Components:
+    - unit tests
+    - integration/acceptance tests
+    - data validation
+    - static analysis
+  - Rationale:
+    - Increases quality (reduces errors, outages, etc.)
+    - Decreases costs, since the cost of bugs rises the later in the SDLC they are discovered ("shifting left")
+    - Indirect benefit: A trusted test suite makes sure that engineers are not dominated by their own creation
 - Type safety:
   - code: use type hints, and force in CI pipeline
   - data: use explicit data schemas
 - Observability:
-  - code: structure & centralized logging, monitoring and alerting, distributed tracing if using micro service architecture
-  - model performance: comparison between different models,  comparison of same model over time (model drift?),  performance for different subsets of the population/bias (if substantial, does this vary by model?).
-  - data: data quality
+  - code
+    - structure & centralized logging
+    - monitoring and alerting
+    - distributed tracing if using micro service architecture
+  - model performance
+    - comparison between different models
+    - comparison of same model over time (model drift?)
+    - performance for different subsets of the population/bias (if substantial, does this vary by model?).
+  - data
+    - data quality
 - DevOps
   - Infrastructure-as-code
   - CI/CD
@@ -140,8 +161,14 @@ Some engineering practices are too constraining (their cost is not offset by lar
 
 ### (Does not need to have:)
 
--
 - Best practices for data science:
+
+## Implementation
+
+See other slide deck for details.
+
+- Following these standards should be part of the definition of done. (Avoid the "mini-waterfall", e.g. putting tests in a separate story and refactoring in yet another story.)
+- Align incentives: Hold teams and organizational unit accountable
 
 ## How engineering complements data science
 
@@ -240,7 +267,6 @@ Some engineering practices are too constraining (their cost is not offset by lar
 #### 4) Find production-ready solution for any hacks
 
 - E.g., unofficial data sources need to be productionized
--
 
 ### Handoff, 3: Productionizing data
 
