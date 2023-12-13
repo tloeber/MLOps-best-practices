@@ -15,3 +15,4 @@ I have mentioned a feature store as a must-have in various sections, scattered a
   - much easier *debugging* of data issues
   - makes *remediating* the effects of data issues easier, because it becomes possible to find out which model versions were trained on faulty data.
   - Can be a necessity to achieve compliance.
+- Low latency serving (using *online* feature store). Note that while the proportion of use cases where this is a must-have is small, it is growing rapidly. Thus, it will likely become a must-have for many companies in the near future.
