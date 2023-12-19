@@ -31,3 +31,7 @@ todo: move most recent arguments here from slide decks; see the PDFs in ../prese
       (e.g., `pylint: disable='no-member'` rather than `disable=E1101`
     - Since overriding is not primarily for human consumption, it is ok to go beyond the line
       length limit. Likewise, it's ok to add an inline comment - no need to add an extra line.
+
+# Resources
+
+- The "Software Engineering at Google" book is a good resource on the *engineering mindset* in general. It is [available for free online](https://abseil.io/resources/swe-book/html/toc.html), though I think this is a great candidate for listening to the audio version from Audible, and just going back to the online edition for reference.
