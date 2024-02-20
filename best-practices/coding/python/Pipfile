@@ -9,6 +9,8 @@ pandas = "*"
 pytest = "*"
 mypy = "*"
 requests = "*"
+nb-mypy = "*"
+ipykernel = "*"
 
 [requires]
 python = 3.10
