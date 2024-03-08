@@ -64,15 +64,20 @@ Balancing the focus on quick delivery of value (meeting functional requirements)
 
 ### Rapid feedback in ML
 
-- Leverage the test pyramid:
-  - the quickest tests are the ones you don’t have to write -> leverage static code analysis, especially type checking! This goes for all of software development, but this advice is especially important in ML because of two things: ML usually uses Python, where static code analysis is optional rather than mandatory (like in a compiled language); running the application to discover bugs is generally orders of magnitude more inefficient than for most other kinds of software application because of the expense of compute requirements and because it takes much longer, thereby considerably prolonging the feedback cycle.
-  - Unit tests: like the former (maybe to a somewhat lesser extent?), it is more common for this to be neglected in ML, even though the payoff is generally much greater. In addition, another challenge is that unit testing is harder, e.g. it is most efficiently done by leveraging proper design patterns in the code to decrease coupling between components, which in turn makes writing unit tests is much easier and less error-prone than having to mark and patch everywhere.
-  - Integration and acceptance tests. The reason this is especially important in ML is because failures are much more likely to be silent, i.e. don’t raise an error. The challenge is that there tends to be less knowledge in ML teams how best to do these (e.g., it is common to simply use pytest because nobody is familiar with dedicated frameworks such as behave + Gherkin).
-  - ML-specific testing?
-- Prioritize observability, so that be know if something went wrong, and can resolve it quickly
+We can build on many insights from the DevOps revolution, though many of the challenges are even harder for ML and require customization:
+
+- Testing
+  - Shifting-left: As the cost of bugs increases rapidly the later in the software development life cycle they are discovered, it pays to focus on catching them as early as  possible. This is especially true for ML system where failures are often silent are especially hard to debug due to their higher complexity.
+  - Leverage the test pyramid.
+    - the quickest tests are the ones you don’t have to write -> leverage static code analysis, especially type checking! This goes for all of software development, but this advice is especially important in ML because of two things: ML usually uses Python, where static code analysis is optional rather than mandatory (like in a compiled language); running the application to discover bugs is generally orders of magnitude more inefficient than for most other kinds of software application because of the expense of compute requirements and because it takes much longer, thereby considerably prolonging the feedback cycle.
+    - Unit tests: like the former (maybe to a somewhat lesser extent?), it is more common for this to be neglected in ML, even though the payoff is generally much greater. In addition, another challenge is that unit testing is harder, e.g. it is most efficiently done by leveraging proper design patterns in the code to decrease coupling between components, which in turn makes writing unit tests is much easier and less error-prone than having to mark and patch everywhere.
+    - Integration and acceptance tests. The reason this is especially important in ML is because failures are much more likely to be silent, i.e. don’t raise an error. The challenge is that there tends to be less knowledge in ML teams how best to do these (e.g., it is common to simply use pytest because nobody is familiar with dedicated frameworks such as behave + Gherkin).
+    - ML-specific testing: todo
+  - Note that testing is also a prerequisite for practicing CI safely: Unless running tests is cheap (which requires them to be automated), it is not feasible to merge into mainline multiple times per day.
+- Prioritize **observability**, so that be know if something went wrong, and can resolve it quickly
   - code (traditional observability)
-  - model performance
-  - data observability (data quality, data lineage)
-- Ability to quickly do local runs for quick development of as much of the functionality as possible. This is complementary to testing effort, which also relies on running as much as possible locally not just for isolation but also for speed.
-- Other insights from CI/CD
-  - we can build on the dev ops revolution, but we face the problem of version control in additional dimensions (versioning data, joint versioning of model artifacts and associated code)
+  - model performance (again, as failures of ML models is often silent, this is even more important than for traditional software)
+  - data observability: data quality (proactive), data lineage (for debugging and potentially compliance).
+  - business metrics we want to influence (most important, but more indirect)
+- Ability to quickly do **local runs** of as much of the functionality as possible, so that we can get  quick feedback during development. This is complementary to testing effort, which also relies on running as much as possible locally not just for isolation but also for speed. Note that this capability is even more important in ML systems  than for traditional software because a full run tends to take much more time, usually by multiple orders of magnitude.
+- Proper **version control** is equally important but harder, as we face the problem of version control in additional dimensions (versioning data, joint versioning of model artifacts and associated code).

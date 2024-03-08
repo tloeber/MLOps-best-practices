@@ -26,5 +26,8 @@ At least the error message tells you how to fix it, but it would be better if we
 
 (Also remember it is hard to play with this coe interactively and simply call \_\_dir\_\_() on an instance, because this code only runs in a pipeline.)
 
-
 Note: **The reason this problem is also not caught by the type checker is because of the library's missing py.typed marker discussed above, which leads mypy to skip it!**
+
+# Other people's issues with Sagemaker from around the web
+
+-

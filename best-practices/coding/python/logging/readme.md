@@ -12,9 +12,9 @@
 
 - Makes it easy to log as JSON.
 - Uses the better-exceptions library under the hood to make logs easier to read. Here is an example of the default output from the standard library's logging module:
-![Alt text](../../../_img/logging/stdlib_logging.png)
+![Alt text](../../../../_img/logging/stdlib_logging.png)
 
 By contrast, this is how the output from Loguru looks like:
-![Alt text](../../../_img/logging/loguru.png)
+![Alt text](../../../../_img/logging/loguru.png)
 
 I think it's clear that the latter is much easier to read! (Note that both are in Python3.10, it's possible that the differences are smaller from Python3.11 onwards because of the improvements to Python's exception formatting.)
