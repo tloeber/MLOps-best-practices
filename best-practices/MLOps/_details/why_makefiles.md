@@ -4,5 +4,4 @@
   - create a central place where to *find* all setup commands.
 
 - Cons:
-  - Commands run in sh vs bash, giving rise to some unexpected behavior (especially around things such as quoting and variable substitution).
-    - Workaround: If running into problems, simply put commands in a bash script and call from the makefile. (Note that this still allows us to retain the third benefit of makefiles, namely using the makefile as a central place referencing all the bash script that a user may need to call directly, even if these scripts are organized into different subdirectories.)
+  - Slight syntax differences. Most of this can be remediated though by [setting bash as the shell to use at the top of each Makefile](https://github.com/tloeber/MLOps-template/blob/37fdb812d3b145dd372b9af18f1f3d532036a2af/Makefile#L1).

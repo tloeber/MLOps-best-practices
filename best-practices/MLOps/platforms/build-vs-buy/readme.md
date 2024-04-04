@@ -97,6 +97,14 @@ Let's now dive into the reasons why buying is generally better than building:
     a cloud-provider agnostic way (probably using Kubernetes) is orders of magnitudes higher -
     so accepting the risk of vendor lock-in is clearly a risk worth taking.
 
+Most companies tend to under-rely on managed services because:
+    - They systematically under-estimate the relative cost of building versus buying, because they:
+      - are overly focused on the additional out-of-pocket *expenses* of managed services, while not sufficiently taking into account the value of engineers' time that this frees up;
+      - don't sufficiently account for the risk of "unknown unknowns" of implementing a solution themselves (["planning fallacy"](https://en.wikipedia.org/wiki/Planning_fallacy));
+    - If there is already an internal team currently providing these services in-house, these internal stakeholders - who now risk loosing their project - often have disproportionate influence on decision-making. This is
+      - because of [loss aversion](https://en.wikipedia.org/wiki/Loss_aversion), i.e. people tend to be more sensitive to losses compared to gains;
+      - because the losses are *concentrated* while the gains are *spread out*, making it easier for the would-be losers to organize and lobby for their interests.
+
 ## What about free and open-source software?
 
 A third option is to leverage free and open-source software (FOSS) options, if any are available.
@@ -145,9 +153,7 @@ solutions makes sense:
 
 # Conclusion
 
-- **Try to find a *managed* service*** - having to deal
-  with lower levels problems such as managing the infrastructure and having to deal with the problems that come with distributed systems (e.g., partial failure)
-  failures adds unnecessary complexity. While leveraging a managed service costs extra,
+- **Try to find a *managed* service*** - having to deal with lower levels problems such as managing the infrastructure and having to deal with the problems that come with distributed systems (e.g., partial failure) adds unnecessary complexity. While leveraging a managed service costs extra,
   once you factor in the cost of engineers' time, managed services are often much cheaper.
   Remember: Successful companies focus on their business's *core* expertise, and try to offload
   everything else!
