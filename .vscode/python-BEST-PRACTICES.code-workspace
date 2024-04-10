@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "..",
+		}
+	],
+	"settings": {
+		"python.defaultInterpreterPath": "/home/thomas-22/.local/share/virtualenvs/python-brO3M1m6/bin/python",
+		"terminal.integrated.cwd": "best-practices/coding/python/",
+	},
+}

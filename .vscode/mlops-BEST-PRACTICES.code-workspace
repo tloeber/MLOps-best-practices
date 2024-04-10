@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "..",
+		}
+	],
+	"settings": {
+		"python.defaultInterpreterPath": "/home/thomas-22/.local/share/virtualenvs/presentations-X1dq4RR9/bin/python",
+		"terminal.integrated.cwd": "best-practices/MLOps/",
+	},
+}
