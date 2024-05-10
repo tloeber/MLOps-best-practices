@@ -64,6 +64,9 @@ There are two main tools that offer an easy wrapper around both virtual environm
 
 ### Poetry
 
+- **Best tool overall** for non-containerized applications, because by creating a Python package, we also make sure that the **working directory is fixed**, so behavior does not change depending from where a script is run or where a notebook resides.
+- See the discussion [here](../../../DevSecOps/CICD/python_environment_setup/readme.md) for special considerations of creating a Python environment in a CICD pipeline.
+
 ### Containerized applications
 
 - The _environment_ management aspect of tools such as Pipenv becomes redundant when using containers (since there will only be a single-environment in a container anyway). However, it doesn't really hurt performance either (as far as I know).
@@ -127,3 +130,7 @@ However, it does show up as an an option when choosing interpreter:
 ![Alt text](../../_img/set_venv_in_vscode.png)
 
 Or strategically place env? <https://code.visualstudio.com/docs/python/environments#_how-the-extension-chooses-an-environment-automatically>
+
+# Special considerations of configuring environment in _CICD pipeline_
+
+See the discussion [here](../../../DevSecOps/CICD/python_environment_setup/readme.md).
