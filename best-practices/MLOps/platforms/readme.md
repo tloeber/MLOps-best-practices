@@ -1,7 +1,11 @@
 # Existing standards
 
-- Google's Rules for ML
+- [Google's Rules for ML](https://developers.google.com/machine-learning/guides/rules-of-ml)
 - AWS Well-architected framework (ML lens)
+
+## Others to evaluate
+
+- [Dagshub's suggestion](https://dagshub.com/blog/cookiecutter-mlops-a-production-focused-project-template/)
 
 # Creating a state-of-the-art ML ecosystem
 
