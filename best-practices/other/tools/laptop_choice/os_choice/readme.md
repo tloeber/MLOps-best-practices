@@ -7,5 +7,5 @@
     - Collect pain points developers usually face in switching, and crowd-source solutions in company wiki
       - In particular, how can we make productivity shortcuts less platform-dependent? See [here](../../../../productivity/keyboard-shortcuts/readme.md) for my approach.
       - Mac:
-        - Swap `cmd` and `ctrl` modifiers for a more Windows/Ubuntu-like experience.
-        - Due to the lower customizability of shortcuts on MacOS, we **need a third-party program** (e.g., Carabiner) for customizing remaining shortcuts. While we generally don't want developers to install random programs, it is essential that we approve a program for remapping keyboard shortcuts, since these are essential for developer productivity.
+        - [Customize keyboard modifying keys](Mac/readme.md).
+        - Due to the lower customizability of shortcuts on MacOS, we **need a third-party program** (e.g., [Karabiner](https://karabiner-elements.pqrs.org/)) for customizing remaining shortcuts. While we generally don't want developers to install random programs, it is essential that we approve a program for remapping keyboard shortcuts, since these are essential for developer productivity.
